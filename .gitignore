@@ -1,0 +1,23 @@
+# Variables de entorno reales (pueden contener credenciales)
+.env
+*.env
+!.env.example
+
+# Claves y certificados
+*.pem
+*.key
+*.crt
+
+# Logs y temporales
+*.log
+logs/
+tmp/
+
+# Sistema operativo y editores
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+
+# Archivos comprimidos de entrega
+*.zip

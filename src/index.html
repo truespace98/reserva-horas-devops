@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva de Horas Médicas | Clínica Salud Integral</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="encabezado">
+    <div class="contenedor">
+      <h1>Clínica Salud Integral</h1>
+      <p>Plataforma web de reserva de horas médicas</p>
+    </div>
+  </header>
+
+  <main class="contenedor grid">
+    <!-- Formulario de reserva (simulado: no envía datos a ningún servidor) -->
+    <section class="tarjeta">
+      <h2>Reservar una hora</h2>
+      <form id="form-reserva" onsubmit="return simularReserva(event)">
+        <label for="nombre">Nombre del paciente</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Ej.: Paciente de prueba" required>
+
+        <label for="rut">RUT</label>
+        <input type="text" id="rut" name="rut" placeholder="11.111.111-1 (dato ficticio)" required>
+
+        <label for="especialidad">Especialidad</label>
+        <select id="especialidad" name="especialidad" required>
+          <option value="">Seleccione una especialidad</option>
+          <option>Medicina general</option>
+          <option>Pediatría</option>
+          <option>Cardiología</option>
+          <option>Dermatología</option>
+          <option>Traumatología</option>
+        </select>
+
+        <label for="fecha">Fecha</label>
+        <input type="date" id="fecha" name="fecha" required>
+
+        <label for="hora">Hora</label>
+        <select id="hora" name="hora" required>
+          <option value="">Seleccione un horario</option>
+          <option>09:00</option>
+          <option>10:00</option>
+          <option>11:00</option>
+          <option>15:00</option>
+          <option>16:00</option>
+        </select>
+
+        <button type="submit">Reservar hora</button>
+        <p id="mensaje" class="mensaje" role="status"></p>
+      </form>
+      <p class="nota">Entorno de demostración: el formulario no almacena ni envía datos personales.</p>
+    </section>
+
+    <aside>
+      <section class="tarjeta">
+        <h2>Datos generales de atención</h2>
+        <ul class="lista">
+          <li><strong>Horario:</strong> lunes a viernes, 08:00 a 20:00</li>
+          <li><strong>Sábados:</strong> 09:00 a 13:00</li>
+          <li><strong>Dirección:</strong> Av. Ficticia 123, Santiago</li>
+          <li><strong>Mesa de ayuda:</strong> +56 2 0000 0000 (ficticio)</li>
+          <li>Llegar 15 minutos antes con cédula de identidad.</li>
+        </ul>
+      </section>
+
+      <section class="tarjeta">
+        <h2>Estado del servicio</h2>
+        <p class="estado"><span class="punto"></span> Servicio operativo</p>
+        <ul class="lista">
+          <li><strong>Servidor:</strong> Nginx (nginx:alpine)</li>
+          <li><strong>Contenedor:</strong> Docker Compose</li>
+          <li><strong>Puerto local:</strong> 8080</li>
+          <li><strong>Versión:</strong> 1.0.0</li>
+        </ul>
+      </section>
+    </aside>
+  </main>
+
+  <footer class="pie">
+    <p>Proyecto DevOps integrador · Servicio web estático de reserva de horas médicas</p>
+  </footer>
+
+  <script>
+    function simularReserva(evento) {
+      evento.preventDefault();
+      const especialidad = document.getElementById('especialidad').value;
+      const fecha = document.getElementById('fecha').value;
+      const hora = document.getElementById('hora').value;
+      document.getElementById('mensaje').textContent =
+        'Reserva simulada: ' + especialidad + ' el ' + fecha + ' a las ' + hora + '.';
+      document.getElementById('form-reserva').reset();
+      return false;
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,131 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Segoe UI", Arial, sans-serif;
+  background: #f2f6f9;
+  color: #1f2d3d;
+  line-height: 1.5;
+}
+
+.contenedor {
+  max-width: 1050px;
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.encabezado {
+  background: #0b6e8a;
+  color: #ffffff;
+  padding: 28px 0;
+}
+
+.encabezado h1 {
+  font-size: 1.8rem;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 3fr 2fr;
+  gap: 24px;
+  margin-top: 28px;
+  margin-bottom: 28px;
+}
+
+.tarjeta {
+  background: #ffffff;
+  border-radius: 10px;
+  padding: 24px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.08);
+  margin-bottom: 24px;
+}
+
+.tarjeta h2 {
+  font-size: 1.2rem;
+  color: #0b6e8a;
+  margin-bottom: 16px;
+}
+
+label {
+  display: block;
+  font-weight: 600;
+  margin: 12px 0 4px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #c5d3dd;
+  border-radius: 6px;
+  font-size: 1rem;
+}
+
+button {
+  margin-top: 20px;
+  width: 100%;
+  padding: 12px;
+  background: #0b6e8a;
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #095a71;
+}
+
+.mensaje {
+  margin-top: 12px;
+  color: #1b7a3a;
+  font-weight: 600;
+}
+
+.nota {
+  margin-top: 12px;
+  font-size: 0.85rem;
+  color: #607080;
+}
+
+.lista {
+  list-style: none;
+}
+
+.lista li {
+  padding: 6px 0;
+  border-bottom: 1px solid #edf1f4;
+}
+
+.estado {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: 700;
+  color: #1b7a3a;
+  margin-bottom: 10px;
+}
+
+.punto {
+  width: 12px;
+  height: 12px;
+  border-radius: 50%;
+  background: #22a34a;
+}
+
+.pie {
+  text-align: center;
+  padding: 18px 0;
+  font-size: 0.85rem;
+  color: #607080;
+}
+
+@media (max-width: 800px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+}

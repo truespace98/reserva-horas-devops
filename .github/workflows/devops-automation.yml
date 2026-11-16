@@ -1,0 +1,39 @@
+name: DevOps Automation
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  validar:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Descargar el repositorio
+        uses: actions/checkout@v4
+
+      - name: Verificar estructura del proyecto
+        run: |
+          for f in src/index.html src/styles.css Dockerfile docker-compose.yml .gitignore .env.example README.md; do
+            test -f "$f" && echo "OK: $f" || { echo "Falta: $f"; exit 1; }
+          done
+
+      - name: Verificar que no se publique el archivo .env
+        run: |
+          if [ -f .env ]; then echo "Error: .env no debe estar en el repositorio"; exit 1; fi
+          echo "OK: no se encontro .env"
+
+      - name: Validar docker-compose.yml
+        run: docker compose config
+
+      - name: Construir imagen Docker
+        run: docker build -t reserva-horas-medicas:ci .
+
+      - name: Probar el servicio
+        run: |
+          docker run -d --name prueba -p 8080:80 reserva-horas-medicas:ci
+          sleep 3
+          curl -sf http://localhost:8080 | grep -q "Reserva de Horas" && echo "OK: servicio responde"
+          docker logs prueba
+          docker rm -f prueba

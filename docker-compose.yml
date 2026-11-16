@@ -1,0 +1,10 @@
+services:
+  web:
+    build: .
+    image: reserva-horas-medicas:1.0.0
+    container_name: ${CONTAINER_NAME:-reserva-horas-web}
+    ports:
+      - "${APP_PORT:-8080}:80"
+    environment:
+      - APP_ENV=${APP_ENV:-local}
+    restart: unless-stopped
